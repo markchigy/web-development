@@ -1,0 +1,113 @@
+@import url("<link href="https://fonts.googleapis.com/css?family=Playfair+Display&display=swap" rel="stylesheet">");
+html { position:relative; height: 1640px;
+font-family: 'Playfair Display', serif; }
+
+div.move{position:relative; width: 820px;}
+
+hr { width: 800px;position:relative;}
+
+p.white {background-color:white;}  
+
+p.heading {
+    position:relative;text-shadow:5px 2px 4px white;
+            border-style: hidden;
+            border-width: 2px;
+            border-color: white;
+        }
+p {
+    font-size: 20px;
+}
+
+
+body {
+	background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQweiDnQN1Y8T1Aej4LBT2xm9Q1vdACZ_47MB6Ee6PtbW7qOvco");
+        background-repeat:no-repeat;
+       background-size:cover;
+        } 
+
+
+p.paragraphs {position:relative;}
+ul.list{position:relative;display:none; visibility:hidden;}
+
+
+
+
+#ft {
+            padding:10px;
+            height: 5%;
+            border: solid grey;
+            opacity: 0.8;
+            position:relative;
+    margin-top: 10px;
+    margin-left: 60px;
+    margin-right: 60px;
+    margin-bottom: 60px;
+            font-size: 20px;
+            }
+
+#bd {    
+        width: 57%;
+        position:relative;
+        height:66.6%;
+        overflow: auto;
+    margin-top: 10px;
+    margin-left: 60px;
+    margin-right: 60px;
+    border: solid grey;
+    font-size: 20px;
+    }
+
+#lnav { width: 183px;
+        height: 65.6%;
+        border: solid grey;
+        padding:10px;
+    float: left;
+    margin-bottom: 10px;
+    margin-left: 60px;
+    margin-right: 10px;
+    opacity: 0.8;
+    font-size: 20px;
+ }
+
+#rnav { width: 183px;
+        height: 65.6%;
+        border: solid grey;
+        float: right; clear:right;
+        padding:10px;
+        opacity: 0.8;
+        position:relative;
+    margin-left: 10px;
+    margin-right: 60px;
+    font-size: 20px;
+    
+    }
+
+
+
+a{ font-size:16px; color:red; text-decoration:underline; }
+a:visited{ font-size:16px; color:green;}
+a:hover{ font-size:30px; color:red;}
+
+
+ul.hlist { 
+color: black; 
+position:relative;
+text-align:center;
+margin:0px;
+ }
+
+.hlist li{
+display:inline;
+margin: 0px 10px 0px 10px;
+ }
+
+div.social { position: relative;}
+
+#fix { float:right;
+position: relative;
+margin:200px}
+
+
+h2 {
+  color: white;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
