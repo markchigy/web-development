@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>FAITH HOPE AND LOVE</title>
+        <meta name="description" content="This is the description">
+        <link rel="stylesheet" href="dogweb.css" />
+        <script src="dogweb.js" async></script>
+    </head>
+    <body id="color">
+       <nav class="navbar">
+  <div class="navbar-center">
+  <img src="logo.jpg" height="110px" width="200px " alt="Logo loads here" />
+  <ul>
+    <div style="font-size:30px">
+  <li><a href="dogweb.html">HOME</a></li>
+  <li><a href="dogwebstore.html">STORE</a></li>
+</div>
+  </ul>
+  </div>
+
+        <div id="wallet">
+            <h2>
+                WALLET
+            </h2>
+            <input type="number" id="TotalWallet"><br>
+
+            <BUTTON id="walletaddcash" onclick="GetWallet()">ADD CASH TO WALLET</BUTTON>
+            
+<H3> Wallet balance: $<span id="WalletBalance">0</span></H3>
+            
+     </div>
+  </nav>
+        <section class="container content-section">
+            <div class="section-title">
+            <h2 align="center" class="banner-title">OUR PUPPIES</h2>
+        </div>
+            <div class="shop-items">
+                <div class="shop-item">
+                    <span class="shop-item-title">LABRADO RETRIEVER</span>
+                    <img class="shop-item-image" src="labrado.jpg">
+                    <div class="shop-item-details">
+                        <span class="shop-item-price" style="font-size:25px">$80.99</span>
+                        <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+                    </div>
+                </div>
+                <div class="shop-item">
+                    <span class="shop-item-title">CHOCOLATE LABRADO</span>
+                    <img class="shop-item-image" src="chocolate.jpg">
+                    <div class="shop-item-details">
+                        <span class="shop-item-price" style="font-size:25px">$90.99</span>
+                        <button class="btn btn-primary shop-item-button"type="button">ADD TO CART</button>
+                    </div>
+                </div>
+                <div class="shop-item">
+                    <span class="shop-item-title">FIGHTER</span>
+                    <img class="shop-item-image" src="Rottweiler.jpg">
+                    <div class="shop-item-details">
+                        <span class="shop-item-price" style="font-size:25px">$300.99</span>
+                        <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+                    </div>
+                </div>
+                <div class="shop-item">
+                    <span class="shop-item-title">PITBULL</span>
+                    <img class="shop-item-image" src="pitbull.jpg">
+                    <div class="shop-item-details">
+                        <span class="shop-item-price" style="font-size:25px">$165.99</span>
+                        <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+                    </div>
+                </div>
+                <div class="shop-item">
+                    <span class="shop-item-title">BOERBOEL</span>
+                    <img class="shop-item-image" src="Boerboel.jpg">
+                    <div class="shop-item-details">
+                        <span class="shop-item-price" style="font-size:25px">$250.75</span>
+                        <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+                    </div>
+            </div>
+            <div class="shop-item">
+                    <span class="shop-item-title">GERMAN SHEPARD</span>
+                    <img class="shop-item-image" src="german.jpg">
+                    <div class="shop-item-details">
+                        <span class="shop-item-price" style="font-size:25px">$250.75</span>
+                        <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+                    </div>
+            </div>
+        </section>
+     
+    <section class="container content-section">
+
+            <h2 class="section-header">CART</h2>
+            <div class="cart-row">
+                <span class="cart-item cart-header cart-column">PUPPY</span>
+                <span class="cart-price cart-header cart-column">PRICE</span>
+                <span class="cart-quantity cart-header cart-column">QUANTITY</span>
+            </div>
+            <div class="cart-items">
+            </div>
+            <div class="cart-total">
+                <strong class="cart-total-title">Total: $</strong>
+                <span class="cart-total-price" style="font-size:25px">0</span>
+            </div>
+            <button class="btn btn-primary btn-purchase" type="button" onclick="purchase()">PURCHASE</button>
+        </section>
+       
+       
+    <h3 align="center" class="banner-title" style="font-size:40px;">THANK YOU FOR VISITING OUR WEBSITE</h3>
+     <div id="showReceipt">
+         
+     </div>
+    </body>
+</html>
