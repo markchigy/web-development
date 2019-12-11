@@ -34,54 +34,37 @@ ul.list{position:relative;display:none; visibility:hidden;}
 
 #ft {
             padding:10px;
-            height: 5%;
-            border: solid grey;
+            height: 60px;
+            margin: 10px 60px 60px 60px;
+            border: solid gray;
             opacity: 0.8;
             position:relative;
-    margin-top: 10px;
-    margin-left: 60px;
-    margin-right: 60px;
-    margin-bottom: 60px;
-            font-size: 20px;
+            top: -1430px;
             }
 
-#bd {    
-        width: 57%;
-        position:relative;
-        height:66.6%;
-        overflow: auto;
-    margin-top: 10px;
-    margin-left: 60px;
-    margin-right: 60px;
-    border: solid grey;
-    font-size: 20px;
-    }
-
-#lnav { width: 183px;
-        height: 65.6%;
-        border: solid grey;
+#bd {   margin: 10px 10px 10px 10px; 
         padding:10px;
-    float: left;
-    margin-bottom: 10px;
-    margin-left: 60px;
-    margin-right: 10px;
-    opacity: 0.8;
-    font-size: 20px;
+        position:relative;
+        height:1000px;}
+
+#lnav { width: 150px;
+        height: 1390px;
+        border: solid gray;
+        
+        padding:10px;
+        margin:10px 10px 10px 60px;
+        opacity: 0.8;
  }
 
-#rnav { width: 183px;
-        height: 65.6%;
-        border: solid grey;
+#rnav { width: 150px;
+        height: 1390px;
+        border: solid gray;
         float: right; clear:right;
         padding:10px;
+        margin:10px 60px 10px 10px;
         opacity: 0.8;
         position:relative;
-    margin-left: 10px;
-    margin-right: 60px;
-    font-size: 20px;
-    
-    }
-
+        top:-1435px;}
 
 
 a{ font-size:16px; color:red; text-decoration:underline; }
