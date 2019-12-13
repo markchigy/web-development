@@ -228,7 +228,7 @@ var cartItemContainer = document.getElementsByClassName("cart-items").item(0)
 
 var s="<ul>";
 for (var i = 0; i < arrayname.length; i++) {
-    s+="<li>"+quantitylist[i] + " " +arrayname[i]+" | "+ "<b>Total Item Cost:</b>  $" + pricelist[i] +"</li>";
+    s+="<li>"+quantitylist[i] + " " +arrayname[i]+" | "+ "<b>Total Cost:</b>  $" + pricelist[i] +"</li>";
 }
 s+="</ul>";
 
