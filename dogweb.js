@@ -183,7 +183,7 @@ var total = document.getElementById("carttotal").innerHTML;
 var balance = document.getElementById("balance").innerHTML;
 var result = balance - total;
 
-if (+balance>= +total ){document.getElementById("balance").innerHTML = result;
+if (+balance>= +total ){document.getElementById("balance").innerHTML = result.toFixed(2);
                         document.getElementById("carttotal").innerHTML = "0";
 
 
