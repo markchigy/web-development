@@ -34,6 +34,17 @@ body {
     color: #40e0d0;
     text-decoration: none;
 }
+h4 {
+  color: #40e0d0;
+  position:relative;
+right: -65px;
+top: -2px;
+}
+.push {
+  position:relative;
+  right: -30px;
+  top: -2px;
+}
 
 .navbar {
   background: var(--mainWhite);
@@ -111,21 +122,11 @@ body {
   color: #ff1ab3;
 }
 /*---------------end of middle section-------------*/
-.band-name {
-    text-align: center;
-    margin: 0;
-    font-size: 4em;
-    font-family: "Booter - Zero Zero";
-    font-weight: normal;
-    color: white;
-}
+
 .ncolor {
   color: purple;
 }
 
-.band-name-large {
-    font-size: 8em;
-}
 #wallet {
   color: #ff1ab3;
 }
@@ -148,38 +149,8 @@ body {
     font-size: 2.5em;
 }
 
-.about-band-image {
-    float: left;
-    height: 200px;
-    width: 200px;
-    margin: 15px;
-    border-radius: 50%;
-}
 
-.main-footer {
-    background-color: #56CCF2;
-    color: white;
-    padding: .25em 0;
-}
 
-.main-footer-container {
-    display: flex;
-    align-items: center;
-}
-
-.main-footer-container ul {
-    flex-grow: 1;
-    text-align: end;
-}
-
-.footer-nav li {
-    padding: 0 .5em;
-}
-
-.footer-nav img {
-    width: 30px;
-    height: 30px;
-}
 
 .btn {
     text-align: center;
@@ -228,38 +199,8 @@ body {
     background-color: #2D9CDB;
 }
 
-.tour-row {
-    border-bottom: 1px solid black;
-    padding-bottom: 1em;
-    margin-bottom: 1em;
-}
 
-.tour-row:last-child {
-    border: none;
-}
 
-.tour-item {
-    display: inline-block;
-    padding-right: .5em;
-}
-
-.tour-date {
-    color: #555;
-    width: 11%;
-    font-weight: bold;
-}
-
-.tour-city {
-    width: 24%;
-}
-
-.tour-arena {
-    width: 42%;
-}
-
-.tour-btn {
-    max-width: 19%;
-}
 
 .shop-item {
     margin: 30px;
@@ -395,7 +336,7 @@ body {
     color: #ff1ab3;
 }
 
-.cart-total-price {
+#carttotal{
     color: #333;
     font-size: 1.1em;
     color: #ff1ab3;
@@ -406,7 +347,7 @@ body {
     margin: 40px auto 80px auto;
     font-size: 1.75em;
 }
-#showReceipt {
+#reciept {
   height: 400px;
   width: 20%;
   z-index: 1;
