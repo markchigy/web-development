@@ -1,6 +1,8 @@
-var nameOfItemInCart = []
-var priceOfItemInCart = []
-var quantityOfItemInCart = []
+var arrayname=[]
+var arrayprice=[]
+var arrayquantity=[]
+var allItems = []
+
 
 
 if (document.readyState == 'loading') {
@@ -9,11 +11,15 @@ if (document.readyState == 'loading') {
     ready()
 }
 
+
+
+
 function ready() {
     var removeCartItemButtons = document.getElementsByClassName('btn-danger')
     for (var i = 0; i < removeCartItemButtons.length; i++) {
         var button = removeCartItemButtons[i]
         button.addEventListener('click', removeCartItem)
+      
     }
 
     var quantityInputs = document.getElementsByClassName('cart-quantity-input')
@@ -28,23 +34,33 @@ function ready() {
         button.addEventListener('click', addToCartClicked)
     }
 
+	var itemsOnPage = document.getElementsByClassName('shop-item');
+	for(var i = 0; i < itemsOnPage.length; i++){
+		let title = itemsOnPage[i].querySelector('.shop-item-title').innerHTML;
+		allItems.push({title: title, stock: document.getElementById(title+"-stock").innerHTML});
+	}
+
     document.getElementsByClassName('btn-purchase')[0].addEventListener('click', purchaseClicked)
 }
 
-/*function purchaseClicked() {
-    alert('Thank you for your purchase')
+
+/* not used*/ 
+function purchaseClicked() {
     var cartItems = document.getElementsByClassName('cart-items')[0]
     while (cartItems.hasChildNodes()) {
         cartItems.removeChild(cartItems.firstChild)
     }
     updateCartTotal()
-}*/
+}
+
 
 function removeCartItem(event) {
     var buttonClicked = event.target
     buttonClicked.parentElement.parentElement.remove()
     updateCartTotal()
 }
+
+
 
 function quantityChanged(event) {
     var input = event.target
@@ -54,42 +70,72 @@ function quantityChanged(event) {
     updateCartTotal()
 }
 
+
+
 function addToCartClicked(event) {
     var button = event.target
     var shopItem = button.parentElement.parentElement
     var title = shopItem.getElementsByClassName('shop-item-title')[0].innerText
     var price = shopItem.getElementsByClassName('shop-item-price')[0].innerText
+                        
     var imageSrc = shopItem.getElementsByClassName('shop-item-image')[0].src
     addItemToCart(title, price, imageSrc)
     updateCartTotal()
 }
 
+
+
 function addItemToCart(title, price, imageSrc) {
+	
     var cartRow = document.createElement('div')
     cartRow.classList.add('cart-row')
     var cartItems = document.getElementsByClassName('cart-items')[0]
     var cartItemNames = cartItems.getElementsByClassName('cart-item-title')
+
+
     for (var i = 0; i < cartItemNames.length; i++) {
         if (cartItemNames[i].innerText == title) {
             alert('This item is already added to the cart')
             return
         }
     }
+
     var cartRowContents = `
-        <div class="cart-item cart-column">
-            <img class="cart-item-image" src="${imageSrc}" width="100" height="100">
-            <span class="cart-item-title">${title}</span>
+     
+ <div class="cart-item cart-column">
+           
+          <img class="cart-item-image" src="${imageSrc}" width="100" height="100">
+            <span class="cart-item-title">${title}</span><hr/>
         </div>
-        <span class="cart-price cart-column">${price}</span>
+        <span class="cart-price cart-column">${price}</span> 
+</div>
         <div class="cart-quantity cart-column">
-            <input class="cart-quantity-input" type="number" value="1">
-            <button class="btn btn-danger" type="button">REMOVE</button>
-        </div>`
+            <input class="cart-quantity-input" onchange="changeStock(\'`+title+`\', this)" type="number" value="1">
+             <button class="btn btn-danger" type="button">REMOVE</button> 
+             `
+	let element_stock = document.getElementById(title+"-stock");
+	element_stock.innerHTML = element_stock.innerHTML - 1;
     cartRow.innerHTML = cartRowContents
     cartItems.append(cartRow)
     cartRow.getElementsByClassName('btn-danger')[0].addEventListener('click', removeCartItem)
     cartRow.getElementsByClassName('cart-quantity-input')[0].addEventListener('change', quantityChanged)
+    
+} 
+
+function changeStock(title, e) {
+	//FIND THE PARTICULAR ITEM BASED ON THE TITLE WE GOT
+	//CHANGE THE INNER HTML OF THE STOCK 
+	let element_stock = document.getElementById(title+"-stock");
+	let howmany = e.value;
+	for(var i = 0; i < allItems.length; i++){
+		if(allItems[i].title == title){
+			if(parseInt(howmany) > parseInt(allItems[i].stock)) e.value = howmany - 1;
+			else element_stock.innerHTML = allItems[i].stock - howmany;
+			break;
+		}
+	}
 }
+
 
 function updateCartTotal() {
     var cartItemContainer = document.getElementsByClassName('cart-items')[0]
@@ -99,65 +145,143 @@ function updateCartTotal() {
         var cartRow = cartRows[i]
         var priceElement = cartRow.getElementsByClassName('cart-price')[0]
         var quantityElement = cartRow.getElementsByClassName('cart-quantity-input')[0]
-        var nameElement = cartRow.getElementsByClassName("cart-item-title")[0]
         var price = parseFloat(priceElement.innerText.replace('$', ''))
         var quantity = quantityElement.value
         total = total + (price * quantity)
-     var eachName = nameElement.innerHTML  
-
-     var t_index = nameOfItemInCart.indexOf(eachName);
-     if (t_index == -1) {
-       nameOfItemInCart.push(eachName);
-       priceOfItemInCart.push(price);
-       quantityOfItemInCart.push(quantity);
-      
-     } else {
-        quantityOfItemInCart[t_index]= quantity
-     }
     }
-
     total = Math.round(total * 100) / 100
-    document.getElementsByClassName('cart-total-price')[0].innerText = total
+    document.getElementById("carttotal").innerText = total
 }
-function GetWallet() {
-      var inputBalance= document.getElementById("TotalWallet").value
-      var zeroinput= document.getElementById("WalletBalance").innerHTML
-      var walletTotal= +inputBalance + +zeroinput
-    document.getElementById("WalletBalance").innerHTML= walletTotal
-    document.getElementById("TotalWallet").value= ""
+
+
+
+
+
+
+
+function changeText() {
+
+var newBalance= document.getElementById("input-balance").value;
+var oldBalance= document.getElementById("balance").innerHTML;
+var totalbalance= +newBalance + +oldBalance;
+  
+  document.getElementById("balance").innerHTML = totalbalance;
+  document.getElementById("input-balance").value = "";
 }
+
+
+
+
+
+
+
 
 
 function purchase() {
-   
-     var purchaseBalance= document.getElementsByClassName('cart-total-price')[0].innerText ;
-    var purchaseinput= document.getElementById("WalletBalance").innerHTML
-   
-if ( +purchaseinput >= +purchaseBalance) {
-
-    var PopUp = "<ul>";
-    for (var i=0; i< nameOfItemInCart.length; i++) {
-        PopUp += "<li>" + "<h3>"  + nameOfItemInCart[i] + "</h3>" + "<h3><p> $" + priceOfItemInCart[i] + "</p></h3>" + "<h3><p>" + quantityOfItemInCart[i] + "</p></h3>" + "</li>";
-    }
-    PopUp += "</ul>"
-
-var reciepttotal= purchaseinput - purchaseBalance;
-document.getElementsByClassName('cart-total-price')[0].innerText = "0"
-document.getElementById("WalletBalance").innerHTML = reciepttotal
-
-document.getElementById("showReceipt").innerHTML = "<h1>Reciept:</h1><br>" + "<h2>Initial Wallet balance:</h2>" + purchaseinput + "<h2>Cart total:</h2>" + purchaseBalance + "<h2>Final wallet balance:</h2>" + reciepttotal + "<br><h2> Puppy/Puppies purchased:</h2>" + PopUp
-
-  var cartItems = document.getElementsByClassName('cart-items')[0]
-    while (cartItems.hasChildNodes()) {
-        cartItems.removeChild(cartItems.firstChild)}
-} 
-   
-
-
-
-    else {
-        alert ("These breeds of puppies come from GONDWANALAND, therefore they're not for free. Please add money to your wallet to process your purchase.")
-    }
     
+var total = document.getElementById("carttotal").innerHTML;
+var balance = document.getElementById("balance").innerHTML;
+var result = balance - total;
+
+if (+balance>= +total ){document.getElementById("balance").innerHTML = result;
+                        document.getElementById("carttotal").innerHTML = "0";
+
+
+
+
+
+
+var itemNamesForReceipt = document.getElementsByClassName('cart-item-title')
+var receiptListItems = document.getElementsByClassName("remove-list-button").item(0)
+var cartItemContainer = document.getElementsByClassName("cart-items").item(0)
+    var cartRows = cartItemContainer.getElementsByClassName('cart-row')
+    
+    for (var i = 0; i < cartRows.length; i++) {
+        
+        var cartRow = cartRows[i]
+        var priceElement = cartRow.getElementsByClassName('cart-price')[0]
+        var quantityElement = cartRow.getElementsByClassName('cart-quantity-input')[0]
+        var nameElement = cartRow.getElementsByClassName('cart-item-title')[0]
+        var price = parseFloat(priceElement.innerText.replace('$', ''))
+      
+        var quantity = quantityElement.value   
+        var finalItemPrice = price * quantity
+        var name = nameElement.innerHTML
+        
+        var item1 = cartItemContainer.innerHTML 
+        
+        
+        arrayname.push(name) +
+         arrayprice.push(finalItemPrice) 
+         arrayquantity.push(quantity) 
+
+        
+        
+
+    }    
+         var namelist=arrayname
+         var pricelist= arrayprice
+         var quantitylist=arrayquantity  
+    
+   /* document.getElementById("items-for-receipt").innerHTML */ 
+
+
+var s="<ul>";
+for (var i = 0; i < arrayname.length; i++) {
+    s+="<li>"+quantitylist[i] + " " +arrayname[i]+" | "+ "<b>Total Item Cost:</b>  $" + pricelist[i] +"</li>";
+}
+s+="</ul>";
+
+ 
+    document.getElementById("reciept").innerHTML = 
+"<h1>Reciept:</h1><br>" + 
+"<h2>Initial Wallet balance:</h2> $" + balance +
+"<h2>Cart total:</h2> $" + total +
+"<h2>Final wallet balance:</h2> $" + result +
+"<br><h2> Puppy/Puppies purchased:</h2>" + s 
+
+ 
+ 
+ 
+
+
+
+
+
+alert("Transaction Successful!\nClick ok to get your receipt.");
+
+var cartItems = document.getElementsByClassName('cart-items')[0]
+while (cartItems.hasChildNodes()) {cartItems.removeChild(cartItems.firstChild)}
+
+var clearcart = document.getElementById("storecart");
+clearcart.parentNode.removeChild(clearcart);
+
+var clearpage = document.getElementById("contents");
+clearpage.parentNode.removeChild(clearpage);
+
+
+
+
 }
 
+ 
+else { var addedbalance = prompt("These breeds of puppies come from GONDWANALAND, therefore they're not for free.\nPlease add money to your wallet to process your purchase.");
+        var walletbalance2= document.getElementById("balance").innerHTML;
+      var insuffcientfunds = +addedbalance + +walletbalance2;
+      document.getElementById("balance").innerHTML = insuffcientfunds;}
+ }
+ 
+
+
+
+
+
+
+
+   
+
+
+
+
+
+     
