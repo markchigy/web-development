@@ -182,8 +182,8 @@ function purchase() {
 var total = document.getElementById("carttotal").innerHTML;
 var balance = document.getElementById("balance").innerHTML;
 var result = balance - total;
-
-if (+balance>= +total ){document.getElementById("balance").innerHTML = result.toFixed(2);
+var N = result.toFixed(2);
+if (+balance>= +total ){document.getElementById("balance").innerHTML = N;
                         document.getElementById("carttotal").innerHTML = "0";
 
 
@@ -237,7 +237,7 @@ s+="</ul>";
 "<h1>Reciept:</h1><br>" + 
 "<h2>Initial Wallet balance:</h2> $" + balance +
 "<h2>Cart total:</h2> $" + total +
-"<h2>Final wallet balance:</h2> $" + result +
+"<h2>Final wallet balance:</h2> $" + N +
 "<br><h2> Puppy/Puppies purchased:</h2>" + s 
 
  
